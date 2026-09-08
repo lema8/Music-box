@@ -23,8 +23,8 @@ object FilenameSanitizer {
         clean = clean.replace(Regex("(_1080p_rip|_720p|_320kbps|_hq|_master|_final|_v\\d+)", RegexOption.IGNORE_CASE), "")
         clean = clean.replace(Regex("official video|music video|audio rip|lyric video|remastered|explicit", RegexOption.IGNORE_CASE), "")
 
-        // Replace underscores and repeated dashes with single space
-        clean = clean.replace(Regex("[_\\-]+"), " ").trim()
+        // Replace underscores with space
+        clean = clean.replace("_", " ")
 
         var artist = "SoundVault Artist"
         var title = clean
@@ -43,6 +43,10 @@ object FilenameSanitizer {
                 artist = parts[1].trim()
             }
         }
+
+        // Clean any extraneous repeated dashes or whitespace in artist / title
+        artist = artist.replace(Regex("\\s+"), " ").trim()
+        title = title.replace(Regex("\\s+"), " ").trim()
 
         fun toTitleCase(str: String): String {
             return str.split(" ")

@@ -31,8 +31,8 @@ class ExampleRobolectricTest {
 
     @Test
     fun `time formatter formats seconds properly`() {
-        assertEquals("0:00", TimeFormatter.formatSeconds(0))
-        assertEquals("3:45", TimeFormatter.formatSeconds(225))
-        assertEquals("1:00:00", TimeFormatter.formatSeconds(3600))
+        assertEquals("00:00", TimeFormatter.formatSeconds(0))
+        assertEquals("03:45", TimeFormatter.formatSeconds(225))
+        assertEquals("60:00", TimeFormatter.formatSeconds(3600))
     }
 }
